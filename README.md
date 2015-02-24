@@ -1,8 +1,6 @@
 # Algorithm & Jon Interviews Questions
 ==========
-
-Algorithms and Job interviews questions using most used language in the world JavaScript !!!
-
+Algorithms and Job interviews questions using most used language in the world JavaScript
 
 
 | problem                                                                                                                                                                                 | solution                                                                                                                                                                              |
