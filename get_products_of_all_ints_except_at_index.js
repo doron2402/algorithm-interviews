@@ -11,16 +11,20 @@ function returnNewProductArray(arr) {
   var products_of_all_ints_except_at_index = []; //same as arr.length
   var product = 1;
   var i = 0;
+
   while (i < arr.length){
     products_of_all_ints_except_at_index[i] = product;
+    console.log(products_of_all_ints_except_at_index);
     product *= arr[i];
     i += 1;
   }
 
   product = 1
   i = i - 1;
+
   while (i >= 0) {
     products_of_all_ints_except_at_index[i] *= product;
+    console.log(products_of_all_ints_except_at_index);
     product *= arr[i];
     i -= 1;
   }

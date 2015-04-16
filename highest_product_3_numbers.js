@@ -13,7 +13,7 @@ function highest_product_of_3(arr){
 
   var highest_product_of_two = arr[0] * arr[1];
   var lowest_product_of_two = arr[0] * arr[1];
-  var highest_product_of_three = arr[0] * arr[1] * arr[2]
+  var highest_product_of_three = arr[0] * arr[1] * arr[2];
 
   arr.forEach(function(current) {
 
