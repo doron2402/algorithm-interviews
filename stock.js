@@ -17,5 +17,5 @@ function findBestProfit(stockPricesYesterday) {
     min_price = Math.min(min_price, current_price);
     max_profit = Math.max(max_profit, current_price - min_price);
   });
-  return max_profit
+  return max_profit;
 };

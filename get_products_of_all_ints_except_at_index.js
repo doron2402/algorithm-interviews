@@ -32,3 +32,25 @@ function returnNewProductArray(arr) {
   return products_of_all_ints_except_at_index;
 
 };
+
+/*
+  Brute Force
+  Time: n*n + n
+*/
+function returnNewProductArray(arr) {
+  newArray = [];
+  arr.forEach(function(num, key) {
+    if (!newArray[key]) {
+      newArray[key] = 1;
+    }
+    arr.forEach(function(num1,key1){
+      newArray[key] *= num1;
+    });
+  });
+
+  arr.forEach(function(num, key){
+    newArray[key] = newArray[key]/num;
+  });
+  
+  return newArray;
+}

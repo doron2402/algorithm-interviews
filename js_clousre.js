@@ -5,8 +5,8 @@ function foo(x) {
   var tmp = 3;
 
   function bar(y) {
-    alert(x + y + (++tmp));
-    alert(x + y + (tmp++));
+    console.log(x + y + (++tmp)); //16
+    console.log(x + y + (tmp++)); //16
   }
 
   bar(10);
