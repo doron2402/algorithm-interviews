@@ -1,0 +1,23 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "worker for running async tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter progress 'tests/**/*.spec.js'",
+    "test:spec": "mocha --reporter spec 'tests/**/*.spec.js'",
+    "test:watch": "npm run test -- --watch"
+  },
+  "keywords": [
+    "node.js",
+    "async",
+    "worker"
+  ],
+  "author": "Doron Segal <doron2402@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4"
+  }
+}
