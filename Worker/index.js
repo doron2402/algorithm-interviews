@@ -12,17 +12,23 @@ const worker = function(tasks, options, callback) {
     throw new TypeError("Callback is not defined");
     // callback = Function.prototype;
   }
-
-  const MaxConcurrentTasks = 10 || options.maxConcurrentTasks;
-  const MaxNumberOfRetry = 3 || options.maxNumberOfRetry;
+  const MaxConcurrentTasks = !isNaN(options.maxConcurrentTasks) ? options.maxConcurrentTasks : 10;
+  const MaxNumberOfRetry = options.maxNumberOfRetry || 3;
   const results = new Array(tasks.length);
   let counter = 0;
   let isComplete = false;
   let isRetryMode = false;
+  let runningTask = 0;
+
+  // When max concurrent task we should return;
+  if (MaxConcurrentTasks <= 0) {
+    return callback(null, []);
+  }
 
   tasks.forEach(function (task, index) {
-    if (!isComplete) {
+    // if (!isComplete) {
       task(function (err, result) {
+        runningTask++;
         counter++;
         if (err) {
           let numberOfRetry = 1;
@@ -36,6 +42,7 @@ const worker = function(tasks, options, callback) {
                 return callback(err);
               }
               isRetryMode = false;
+              runningTask--
               results[index] = result;
               if (counter === tasks.length && !isRetryMode) {
                 isComplete = true;
@@ -44,6 +51,7 @@ const worker = function(tasks, options, callback) {
             });
           }
         } else {
+          runningTask--
           results[index] = result;
         }
 
@@ -51,10 +59,10 @@ const worker = function(tasks, options, callback) {
           isComplete = true;
           callback(null, results);
         }
-      });
-    }
+      }); // end iterator
+    // } // is Complete
 
-  }, this);
+  }, this); // end foreach
 
 };
 
