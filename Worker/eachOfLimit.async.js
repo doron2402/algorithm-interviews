@@ -25,23 +25,23 @@ function iterator(coll) {
     }
 }
 
-// var fn = function (num, index, cb) {
-//   setTimeout(function () {
-//     num += 2;
-//     cb(null,num);
-//   }, num * 1000);
-// };
-// var arr = [1, 2, 3, 4,5,6,7,8,9];
-// var finalCB = function (err, result) {
-//   if (err) {
-//     console.log('err');
-//     console.log(err);
-//     return err;
-//   }
-//   console.log('result');
-//   console.log(result);
-//   return result;
-// };
+var fn = function (num, index, cb) {
+  setTimeout(function () {
+    num += 2;
+    cb(null,num);
+  }, num * 1000);
+};
+var arr = [1, 2, 3, 4,5,6,7,8,9];
+var finalCB = function (err, result) {
+  if (err) {
+    console.log('err');
+    console.log(err);
+    return err;
+  }
+  console.log('result');
+  console.log(result);
+  return result;
+};
 
 
 var runTasks = function (tasks, options, fn, callback) {
@@ -106,5 +106,4 @@ var runTasks = function (tasks, options, fn, callback) {
     retry();
 };
 
-
-module.exports = runTasks;
+runTasks(arr, { limit: 2 }, fn, finalCB);

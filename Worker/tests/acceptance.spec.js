@@ -1,7 +1,7 @@
 const expect = require('expect');
 const sinon = require('sinon');
 const worker = require('../');
-const testFn = function (cb) {
+const testFn = function (val, index, cb) {
   var self = this;
   setTimeout(function () {
     cb(null, self.message);
@@ -9,17 +9,18 @@ const testFn = function (cb) {
 };
 
 const works = [
-  testFn.bind({ time: 1000, message: 'aaa' }),
-  testFn.bind({ time: 2000, message: 'bbb' }),
-  testFn.bind({ time: 3000, message: 'ccc' })
+  1,
+  2,
+  3,
+  4
 ];
 
-describe('Worker :: Acceptance', function () {
+describe.only('Worker :: Acceptance', function () {
   var expectedErrors = null;
   var expectedResults = null;
   before(function (done) {
     this.timeout(5000);
-    worker(works, function (err, result) {
+    worker(works, { limit: 2 }, testFn, function (err, result) {
       expectedErrors = err;
       expectedResults = result;
       done();

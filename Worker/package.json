@@ -16,6 +16,7 @@
   "author": "Doron Segal <doron2402@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "async": "^2.0.1",
     "expect": "^1.20.2",
     "mocha": "^2.5.3",
     "sinon": "^1.17.4"
